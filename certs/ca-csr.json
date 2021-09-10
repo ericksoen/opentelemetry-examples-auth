@@ -1,0 +1,12 @@
+{
+  "hosts": ["gateway"],
+  "key": {
+    "algo": "rsa",
+    "size": 2048
+  },
+  "names": [
+    {
+      "O": "OpenTelemetry Collector"
+    }
+  ]
+}

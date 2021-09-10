@@ -1,0 +1,39 @@
+version: "2"
+networks:
+  default:
+    external: true
+    name: pullman
+services:
+  gateway:
+    image: otel/opentelemetry-collector:latest
+    command: ["--config=/etc/otel-config.yaml", "--log-level=debug"]
+    ports:
+      - "13134:13134"
+      - "4320:4320"
+    volumes:
+      - ./certs/cert.pem:/tmp/certs/cert.pem
+      - ./certs/cert-key.pem:/tmp/certs/cert-key.pem
+      - ./config-gateway.yaml:/etc/otel-config.yaml
+    env_file: 
+      - ./service.env
+    depends_on:
+      - jaeger
+  agent:
+    image: otel/opentelemetry-collector:latest
+    command: ["--config=/etc/otel-config.yaml", "--log-level=debug"]
+    ports:
+      - "13133:13133"
+      - "4317:4317"
+    volumes:
+      - ./certs/ca.pem:/tmp/certs/ca.pem
+      - ./config-agent.yaml:/etc/otel-config.yaml
+    env_file:
+      - ./service.env
+    depends_on: 
+      - gateway
+  jaeger:
+    image: jaegertracing/all-in-one
+    command: ["--log-level=error"]
+    ports:
+      - "14250:14250"
+      - "16686:16686"

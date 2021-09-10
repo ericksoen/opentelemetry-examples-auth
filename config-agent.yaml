@@ -1,0 +1,28 @@
+extensions:
+  bearertokenauth:
+    token: ${GATEWAY_BEARER_TOKEN}
+receivers:
+  otlp:
+    protocols:
+      grpc:
+      http:
+exporters:
+  otlp/auth:
+    endpoint: gateway:4320
+    ca_file: /tmp/certs/ca.pem
+    auth:
+      authenticator: bearertokenauth
+processors:
+  attributes:
+    actions:
+      - key: environment
+        value: dev
+        action: insert
+  batch:
+service:
+  extensions: [bearertokenauth]
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors: [batch, attributes]
+      exporters: [otlp/auth]

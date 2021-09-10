@@ -1,0 +1,35 @@
+extensions:
+  oidc:
+    issuer_url: ${ISSUER_URL}
+    audience: account
+  health_check:
+    endpoint: 0.0.0.0:13134
+receivers:
+  otlp:
+    protocols:
+      grpc:
+        endpoint: 0.0.0.0:4320
+        tls_settings:
+          cert_file: /tmp/certs/cert.pem
+          key_file: /tmp/certs/cert-key.pem
+        auth:
+          authenticator: oidc
+      http:
+processors:
+  attributes:
+    actions:
+      - key: tenant
+        value: gateway
+        action: insert
+exporters:
+  jaeger:
+    endpoint: jaeger:14250
+    insecure: true
+
+service:
+  extensions: [health_check, oidc]
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors: [attributes]
+      exporters: [jaeger]
