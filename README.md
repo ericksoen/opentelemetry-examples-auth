@@ -41,6 +41,8 @@ One other note about this guide before we get started: _most of the complexity i
 
 Once you complete these setup steps, however, we should be able to securely transmit traces from our Agent to Gateway collectors.
 
+The accompanying [GitHub repo](https://github.com/ericksoen/opentelemetry-examples-auth) for this post provides all the necessary code samples for you to proceed. Clone the repo to get started with adding a security boundary between your Agent and Gateway collectors. 
+
 ## Dependencies
 
 This guide requires several tools to correctly configure your working environment and assumes some fluency with each. These tools include:
@@ -196,7 +198,8 @@ I've provided a few suggestions for [experiments](./experiments.md) you might tr
 
 ## Resources
 
-1. [Securing Your OpenTelemetry Collector](https://medium.com/opentelemetry/securing-your-opentelemetry-collector-1a4f9fa5bd6f)
+1. [OpenTelemetry Collector Authentication Sample Code](https://github.com/ericksoen/opentelemetry-examples-auth)
+1. [Securing Your OpenTelemetry Collector (original)](https://medium.com/opentelemetry/securing-your-opentelemetry-collector-1a4f9fa5bd6f)
 1. [OpenTelemetry Security Guidance](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/security.md)
 1. [Jaeger](https://www.jaegertracing.io/docs/1.26/)
 1. [TraceGen](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/tracegen)
