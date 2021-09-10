@@ -15,7 +15,7 @@ agent_1    | Error: cannot load configuration: error reading exporters configura
 agent_1    | * '' has invalid keys: per_rpc_auth
 ```
 
-![Musician David Byrne says "My God, what have I done?"](./images/DavidBryneGif.webp)
+![Musician David Byrne says "My God, what have I done?"](./images/david-byrne.gif)
 
 It's a frustrating feeling as a developer (and also where I started with this demo). At some point I'm sure the security guidance in this updated guide will be superseded&mdash;if it does, I hope some enterprising reader considers contributing a v3 guide back to the OpenTelemetry community 😍.
 
