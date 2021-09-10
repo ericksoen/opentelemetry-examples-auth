@@ -192,8 +192,7 @@ At this point, you likely have a working implementation. If you don't, I'd love 
 
 My experience building software is that it's much easier to understand important systems behaviors when they're broken rather than functioning as expected: _what assumptions about the behavior of our system do not hold true under certain conditions_?
 
-A few suggestions for you on how you might break our sample implementation to observe the system's failure modes 😍:
-
+I've provided a few suggestions for [experiments](./experiments.md) you might try to break our sample implementation and observe the system's failure modes 😍.
 
 ## Resources
 
